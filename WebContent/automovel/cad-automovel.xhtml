@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+<ui:debug />
+	<h:form id="cadAutomovelForm">
+		<p:panel header="Cadastro de Automóvel">
+			<p:panelGrid columns="2">
+
+				<p:outputLabel for="ano-fabricacao" value="Ano de Fabricação:" />
+				<p:inputText id="ano-fabricacao" 
+					value="#{automovelBean.entidade.anoFabricacao}" maxlength="4"/>
+
+				 <p:outputLabel for="ano-modelo" value="Ano do Modelo:" />
+				<p:inputText id="ano-modelo"
+					value="#{automovelBean.entidade.anoModelo}" maxlength="4" />
+
+				<p:outputLabel for="kilometragem" value="Kilometragem:" />
+				<p:inputText id="kilometragem"
+					value="#{automovelBean.entidade.kilometragem}" maxlength="9"/>
+
+<!-- 				<p:outputLabel for="preco" value="Preço:" />
+				<p:inputMask mask="999.999,99" id="preco" value="#{automovelBean.entidade.preco}" />
+ -->
+				<p:outputLabel for="observacoes" value="Observações:" />
+				<p:inputTextarea id="observacoes"
+					value="#{automovelBean.entidade.observacao}" />
+				
+				<p:commandButton action="#{automovelBean.salvar()}" value="Salvar"/>
+			</p:panelGrid>
+		</p:panel>
+
+	</h:form>
+
+</h:body>
+</html>

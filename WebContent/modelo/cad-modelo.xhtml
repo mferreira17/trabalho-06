@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+	<h:form>
+		<p:panel header="Cadastro de Automóvel">
+			<p:panelGrid columns="2">
+
+				<p:outputLabel for="ano-fabricacao" value="Ano de Fabricação:" />
+				<p:inputNumber id="ano-fabricacao"
+					value="#{automovelBean.automovel.anoFabricacao}" />
+
+				<p:outputLabel for="ano-modelo" value="Ano do Modelo:" />
+				<p:inputNumber id="ano-modelo"
+					value="#{automovelBean.automovel.anoModelo}" />
+
+				<p:outputLabel for="kilometragem" value="Kilometragem:" />
+				<p:inputNumber id="kilometragem"
+					value="#{automovelBean.automovel.kilometragem}" />
+
+				<p:outputLabel for="preco" value="Preço:" />
+				<p:inputNumber id="preco" value="#{automovelBean.automovel.preco}" />
+
+				<p:outputLabel for="observacoes" value="Observações:" />
+				<p:inputTextarea id="observacoes"
+					value="#{automovelBean.automovel.observacao}" />
+
+				<p:commandButton action="#{automovelBean.salvar}" value="Salvar" />
+			</p:panelGrid>
+		</p:panel>
+
+	</h:form>
+
+</h:body>
+</html>
