@@ -7,7 +7,8 @@
 
 <h:head></h:head>
 <h:body>
-
+	
+	<p:growl autoUpdate="true" id="growlMessage" life="5000" showDetail="true"/>
 	<h:form>
 		<p:panel header="Cadastro de Marca">
 			<p:panelGrid columns="2">
@@ -15,7 +16,7 @@
 				<p:outputLabel for="nome" value="Nome:" />
 				<p:inputText id="nome" value="#{marcaBean.entidade.nome}"/>
 				
-				<p:commandButton action="#{marcaBean.salvar}" value="Salvar" />
+				<p:commandButton action="#{marcaBean.salvar}" value="Salvar" update="@form" />
 				<p:button value="Voltar" outcome="/index.html" />
 			</p:panelGrid>
 		</p:panel>

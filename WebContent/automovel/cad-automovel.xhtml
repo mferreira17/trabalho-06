@@ -7,7 +7,8 @@
 
 <h:head></h:head>
 <h:body>
-	<ui:debug rendered="true"/>
+	
+	<p:growl autoUpdate="true" id="growlMessage" life="5000" showDetail="true"/>
 	<h:form id="cadAutomovelForm">
 		<p:panel header="Cadastro de Automóvel">
 			<p:panelGrid columns="2">
@@ -24,9 +25,9 @@
 					value="#{automovelBean.entidade.kilometragem}" maxlength="9" />
 
 				<p:outputLabel for="preco" value="Preço:" />
-				<p:inputMask mask="999.999,99" id="preco" value="#{automovelBean.entidade.preco}">
+				<p:inputText id="preco" value="#{automovelBean.entidade.preco}" maxlength="9">
 					<f:converter converterId="javax.faces.Float"/>
-				</p:inputMask>
+				</p:inputText>
 				
 				<p:outputLabel for="observacoes" value="Observações:" />
 				<p:inputTextarea id="observacoes"
@@ -34,9 +35,14 @@
 				
 				<p:outputLabel for="foto" value="Foto do Veículo:" />	
 				<p:fileUpload id="foto" value="#{automovelBean.entidade.foto}" fileLimit="1" sizeLimit="1024"/>
-
-				<p:commandButton action="#{automovelBean.salvar()}" value="Salvar" />
+				
+				
+				<p:commandButton action="#{automovelBean.salvar()}" value="Salvar" update="@form" rendered="#{empty automovelBean.entidade.id}"/>
+				<p:commandButton action="#{automovelBean.editar()}" value="Editar" update="@form" rendered="#{not empty automovelBean.entidade.id}"/>
+				
 				<p:button value="Voltar" outcome="/index.html" />
+			
+			
 			</p:panelGrid>
 		</p:panel>
 

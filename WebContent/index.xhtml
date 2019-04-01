@@ -9,6 +9,7 @@
 	<title>Cadastro e Busca de Automóveis</title>
 </h:head>
 <h:body>
+	<p:growl autoUpdate="true" id="growlMessage" life="5000"  />
 	<div>
 		<p:menubar>
 			<p:submenu label="Cadastros">
@@ -23,7 +24,7 @@
 	<br />
 	<div>
 		<p:panel header="Sistrânsito - Cadastro de Automóveis">
-			<p:dataTable value="#{indexBean.automoveis}" var="auto"
+			<p:dataTable value="#{indexBean.automoveis}" var="auto" id="dtAutomoveis"
 				emptyMessage="Nenhum registro encontrado">
 				<p:column headerText="Ano do Fabricação">
 					<p:outputLabel value="#{auto.anoFabricacao}" />
@@ -35,13 +36,21 @@
 					<p:outputLabel value="#{auto.kilometragem}" />
 				</p:column>
 				<p:column headerText="Preço">
-					<p:outputLabel value="#{auto.preco}" />
+					<p:outputLabel value="#{auto.preco}">
+						<f:converter converterId="javax.faces.Float"/>
+					</p:outputLabel>
 				</p:column>
 				<p:column headerText="Modelo">
 					<p:outputLabel value="#{auto.modelo.descricao}" />
 				</p:column>
 				<p:column headerText="Observações">
 					<p:outputLabel value="#{auto.observacao}" />
+				</p:column>
+				<p:column headerText="Ações">
+					<p:button value="Editar" outcome="/automovel/cad-automovel.xthml?faces-redirect=true" includeViewParams="true">
+						<f:param name="autoId" value="#{auto.id}"/>
+					</p:button>
+					<p:commandButton value="Remover" action="#{automovelBean.remove(auto)}" update=":dtAutomoveis" immediate="true"/>
 				</p:column>
 			</p:dataTable>
 		</p:panel>
