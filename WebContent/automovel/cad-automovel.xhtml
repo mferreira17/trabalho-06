@@ -31,6 +31,9 @@
 				<p:outputLabel for="observacoes" value="Observações:" />
 				<p:inputTextarea id="observacoes"
 					value="#{automovelBean.entidade.observacao}" />
+				
+				<p:outputLabel for="foto" value="Foto do Veículo:" />	
+				<p:fileUpload id="foto" value="#{automovelBean.entidade.foto}" fileLimit="1" sizeLimit="1024"/>
 
 				<p:commandButton action="#{automovelBean.salvar()}" value="Salvar" />
 				<p:button value="Voltar" outcome="/index.html" />

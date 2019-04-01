@@ -9,41 +9,64 @@
 	<title>Cadastro e Busca de Automóveis</title>
 </h:head>
 <h:body>
-		<div>
-			<p:menubar>
-				<p:submenu label="Cadastros">
-					<p:menuitem value="Automóveis" url="/automovel/cad-automovel.xhtml" />
-					<p:menuitem value="Marcas" url="/marca/cad-marca.xhtml" />
-					<p:menuitem value="Modelos" url="/modelo/cad-modelo.xhtml" />
-				</p:submenu>
-			</p:menubar>
-		</div>
-		<br />
-		<br />
-		<br />
-		<div>
+	<div>
+		<p:menubar>
+			<p:submenu label="Cadastros">
+				<p:menuitem value="Automóveis" url="/automovel/cad-automovel.xhtml" />
+				<p:menuitem value="Marcas" url="/marca/cad-marca.xhtml" />
+				<p:menuitem value="Modelos" url="/modelo/cad-modelo.xhtml" />
+			</p:submenu>
+		</p:menubar>
+	</div>
+	<br />
+	<br />
+	<br />
+	<div>
 		<p:panel header="Sistrânsito - Cadastro de Automóveis">
-			<p:dataTable value="#{indexBean.automoveis}" var="auto">
+			<p:dataTable value="#{indexBean.automoveis}" var="auto"
+				emptyMessage="Nenhum registro encontrado">
 				<p:column headerText="Ano do Fabricação">
-					<p:outputLabel value="#{auto.anoFabricacao}"/>
+					<p:outputLabel value="#{auto.anoFabricacao}" />
 				</p:column>
 				<p:column headerText="Ano do Modelo">
-					<p:outputLabel value="#{auto.anoModelo}"/>
+					<p:outputLabel value="#{auto.anoModelo}" />
 				</p:column>
 				<p:column headerText="Kilometragem">
-					<p:outputLabel value="#{auto.kilometragem}"/>
+					<p:outputLabel value="#{auto.kilometragem}" />
 				</p:column>
 				<p:column headerText="Preço">
-					<p:outputLabel value="#{auto.preco}"/>
+					<p:outputLabel value="#{auto.preco}" />
 				</p:column>
 				<p:column headerText="Modelo">
-					<p:outputLabel value="#{auto.modelo.descricao}"/>
+					<p:outputLabel value="#{auto.modelo.descricao}" />
 				</p:column>
 				<p:column headerText="Observações">
-					<p:outputLabel value="#{auto.observacao}"/>
+					<p:outputLabel value="#{auto.observacao}" />
 				</p:column>
 			</p:dataTable>
 		</p:panel>
-		</div>
+
+		<br /> <br />
+
+		<p:panel header="Sistrânsito - Pesquisa">
+			<h:form>
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Critério de Pesquisa.:" />
+					<p:selectOneMenu>
+						<f:selectItem noSelectionOption="true" itemLabel="Selecione..." />
+						<f:selectItem itemLabel="Ano de Fabricação" />
+						<f:selectItem itemLabel="Ano de Modelo" />
+						<f:selectItem itemLabel="Ano de Modelo" />
+						<f:selectItem itemLabel="Preço" />
+						<f:selectItem itemLabel="Kilometragem" />
+						<f:selectItem itemLabel="Marca" />
+						<f:selectItem itemLabel="Modelo" />
+					</p:selectOneMenu>
+					<p:outputLabel value="Informe valor para pesquisar.:" />
+					<p:inputText value="" />
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+	</div>
 </h:body>
 </html>
