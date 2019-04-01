@@ -15,7 +15,7 @@ public class EntidadeDao<T> {
 	@PersistenceContext(unitName = "automoveisPU")
 	private static EntityManager em;
 
-	@Transactional
+	@Transactional(rollbackOn=Exception.class)
 	public void salvar(T entidade) {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
@@ -25,7 +25,7 @@ public class EntidadeDao<T> {
 
 	@SuppressWarnings("unchecked")
 	public List<T> obterTodosPorClasse(Class classe) {
-		TypedQuery<T> query = em.createQuery("select o from ".concat(classe.getSimpleName()), classe);
+		TypedQuery<T> query = em.createQuery("select o from ".concat(classe.getSimpleName()).concat(" o"), classe);
 		return query.getResultList();
 	}
 

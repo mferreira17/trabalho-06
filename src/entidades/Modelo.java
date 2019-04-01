@@ -18,22 +18,18 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Table(name = "modelo")
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Modelo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@NonNull
 	@Column(name="descricao")
 	private String descricao;
 
-	@NonNull
 	@Column(name="potencia")
 	private Integer potencia;
 
-	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "id_marca", referencedColumnName = "id")
 	private Marca marca;

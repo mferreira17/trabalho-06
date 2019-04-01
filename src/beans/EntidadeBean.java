@@ -2,6 +2,7 @@ package beans;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -34,6 +35,10 @@ public abstract class EntidadeBean<T>  {
 	public void salvar() {
 		System.out.println(entidade.toString());
 		dao.salvar(entidade);
+	}
+	
+	public List<T> listar(){
+		return dao.obterTodosPorClasse(entidade.getClass());
 	}
 
 }

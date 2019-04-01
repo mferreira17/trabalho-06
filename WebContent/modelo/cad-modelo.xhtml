@@ -9,27 +9,22 @@
 <h:body>
 
 	<h:form>
-		<p:panel header="Cadastro de Automóvel">
+		<p:panel header="Cadastro de Modelo">
 			<p:panelGrid columns="2">
 
-				<p:outputLabel for="ano-fabricacao" value="Ano de Fabricação:" />
-				<p:inputNumber id="ano-fabricacao"
-					value="#{automovelBean.automovel.anoFabricacao}" />
+				<p:outputLabel for="descricao" value="Descrição:" />
+				<p:inputNumber id="descricao"
+					value="#{modeloBean.entidade.descricao}" />
 
-				<p:outputLabel for="ano-modelo" value="Ano do Modelo:" />
-				<p:inputNumber id="ano-modelo"
-					value="#{automovelBean.automovel.anoModelo}" />
+				<p:outputLabel for="potencia" value="Potência:" />
+				<p:inputNumber id="potencia" value="#{modeloBean.entidade.potencia}" />
 
-				<p:outputLabel for="kilometragem" value="Kilometragem:" />
-				<p:inputNumber id="kilometragem"
-					value="#{automovelBean.automovel.kilometragem}" />
-
-				<p:outputLabel for="preco" value="Preço:" />
-				<p:inputNumber id="preco" value="#{automovelBean.automovel.preco}" />
-
-				<p:outputLabel for="observacoes" value="Observações:" />
-				<p:inputTextarea id="observacoes"
-					value="#{automovelBean.automovel.observacao}" />
+				<p:outputLabel for="marca" value="Marca:" />
+				<p:selectOneMenu id="marca" value="#{modeloBean.entidade.marca}">
+					<f:selectItem noSelectionOption="true" itemLabel="Selecione..."/>
+					<f:selectItems var="marca" itemValue="#{marca}"
+						itemLabel="#{marca.nome}"  value="#{marcaBean.listar()}"/>
+				</p:selectOneMenu>
 
 				<p:commandButton action="#{automovelBean.salvar}" value="Salvar" />
 			</p:panelGrid>

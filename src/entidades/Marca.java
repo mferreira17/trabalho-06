@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Table(name = "marca")
 public class Marca {
 
@@ -23,7 +22,6 @@ public class Marca {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@NonNull
 	@Column(name="nome")
 	private String nome;
 

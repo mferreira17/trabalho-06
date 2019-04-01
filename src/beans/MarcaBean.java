@@ -9,6 +9,7 @@ import entidades.Marca;
 
 @Named
 @ViewScoped
+@SuppressWarnings("serial")
 public class MarcaBean extends EntidadeBean<Marca> implements Serializable{
 
 }

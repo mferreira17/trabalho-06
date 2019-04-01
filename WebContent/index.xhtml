@@ -1,11 +1,49 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<h:body> 
-	inicio
-</h:body> 
+<h:head>
+	<title>Cadastro e Busca de Automóveis</title>
+</h:head>
+<h:body>
+		<div>
+			<p:menubar>
+				<p:submenu label="Cadastros">
+					<p:menuitem value="Automóveis" url="/automovel/cad-automovel.xhtml" />
+					<p:menuitem value="Marcas" url="/marca/cad-marca.xhtml" />
+					<p:menuitem value="Modelos" url="/modelo/cad-modelo.xhtml" />
+				</p:submenu>
+			</p:menubar>
+		</div>
+		<br />
+		<br />
+		<br />
+		<div>
+		<p:panel header="Sistrânsito - Cadastro de Automóveis">
+			<p:dataTable value="#{indexBean.automoveis}" var="auto">
+				<p:column headerText="Ano do Fabricação">
+					<p:outputLabel value="#{auto.anoFabricacao}"/>
+				</p:column>
+				<p:column headerText="Ano do Modelo">
+					<p:outputLabel value="#{auto.anoModelo}"/>
+				</p:column>
+				<p:column headerText="Kilometragem">
+					<p:outputLabel value="#{auto.kilometragem}"/>
+				</p:column>
+				<p:column headerText="Preço">
+					<p:outputLabel value="#{auto.preco}"/>
+				</p:column>
+				<p:column headerText="Modelo">
+					<p:outputLabel value="#{auto.modelo.descricao}"/>
+				</p:column>
+				<p:column headerText="Observações">
+					<p:outputLabel value="#{auto.observacao}"/>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+		</div>
+</h:body>
 </html>
