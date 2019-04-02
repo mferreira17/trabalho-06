@@ -71,10 +71,9 @@
 				<version>3.0.0</version>
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
-					<outputDirectory>automoveis</outputDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>automoveis</finalName>
+		<finalName>${project.artifactId}</finalName>
 	</build>
 </project>
