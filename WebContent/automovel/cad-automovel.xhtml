@@ -34,7 +34,7 @@
 					value="#{automovelBean.entidade.observacao}" />
 				
 				<p:outputLabel for="foto" value="Foto do Veículo:" />	
-				<p:fileUpload id="foto" value="#{automovelBean.entidade.foto}" fileLimit="1" sizeLimit="1024"/>
+				<p:fileUpload id="foto" value="#{automovelBean.entidade.foto}" fileLimit="1" sizeLimit="1024" mode="simple"/>
 				
 				
 				<p:commandButton action="#{automovelBean.salvar()}" value="Salvar" update="@form" rendered="#{empty automovelBean.entidade.id}"/>
