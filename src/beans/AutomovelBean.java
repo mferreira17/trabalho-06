@@ -1,18 +1,23 @@
 package beans;
 
+import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+
 import entidades.Automovel;
 import entidades.Marca;
 import entidades.Modelo;
+import javassist.bytecode.ByteArray;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +29,7 @@ public class AutomovelBean extends EntidadeBean<Automovel> implements Serializab
 	@Getter
 	@Setter
 	private Marca marca;
-
+	
 	@Getter
 	@Setter
 	private List<Modelo> modelos;
@@ -47,6 +52,10 @@ public class AutomovelBean extends EntidadeBean<Automovel> implements Serializab
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("marca", marca);
 		modelos = obterPorConsulta("Modelo.obterPorMarca", params);
+	}
+	
+	public void upload(FileUploadEvent event) {
+		entidade.setFoto(event.getFile().getContents());
 	}
 
 }

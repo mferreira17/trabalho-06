@@ -19,7 +19,7 @@ public abstract class EntidadeBean<T> {
 
 	@Getter
 	@Setter
-	private T entidade;
+	protected T entidade;
 
 	@Inject
 	private transient EntidadeDao<T> dao;
