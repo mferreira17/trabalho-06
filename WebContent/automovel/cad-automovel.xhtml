@@ -37,6 +37,21 @@
 				<p:fileUpload id="foto" value="#{automovelBean.entidade.foto}" fileLimit="1" sizeLimit="1024"/>
 				
 				
+				<p:outputLabel for="marca" value="Marca:"/>
+				<p:selectOneMenu id="marca" value="#{automovelBean.marca}">
+					<p:ajax listener="#{automovelBean.updateComboModelo}" update="modelo"/>
+					<f:selectItem noSelectionOption="true" itemLabel="Selecione..."/>
+					<f:selectItems var="marca" value="#{marcaBean.listar()}" itemLabel="#{marca.nome}" itemValue="#{marca}"/>
+				</p:selectOneMenu>
+				
+							
+				<p:outputLabel for="modelo" value="Modelo:" />
+				<p:selectOneMenu id="modelo" value="#{automovelBean.entidade.modelo}">
+					<f:selectItem noSelectionOption="true" itemLabel="Selecione..."/>
+					<f:selectItems var="modelo" value="#{modeloBean.listar()}" itemLabel="#{modelo.descricao}" itemValue="#{modelo}"/>
+				</p:selectOneMenu>
+				
+				
 				<p:commandButton action="#{automovelBean.salvar()}" value="Salvar" update="@form" rendered="#{empty automovelBean.entidade.id}"/>
 				<p:commandButton action="#{automovelBean.editar()}" value="Editar" update="@form" rendered="#{not empty automovelBean.entidade.id}"/>
 				
