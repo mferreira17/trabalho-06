@@ -8,25 +8,29 @@
 <h:head></h:head>
 <h:body>
 
+	<p:growl autoUpdate="true" id="growlMessage" life="5000"
+		showDetail="true" />
 	<h:form>
 		<p:panel header="Cadastro de Modelo">
 			<p:panelGrid columns="2">
 
 				<p:outputLabel for="descricao" value="Descrição:" />
-				<p:inputNumber id="descricao"
-					value="#{modeloBean.entidade.descricao}" />
+				<p:inputText id="descricao" value="#{modeloBean.entidade.descricao}" />
 
 				<p:outputLabel for="potencia" value="Potência:" />
-				<p:inputNumber id="potencia" value="#{modeloBean.entidade.potencia}" />
+				<p:inputText id="potencia" value="#{modeloBean.entidade.potencia}">
+				<f:converter converterId="javax.faces.Integer" />
+				</p:inputText>
 
 				<p:outputLabel for="marca" value="Marca:" />
-				<p:selectOneMenu id="marca" value="#{modeloBean.entidade.marca}">
-					<f:selectItem noSelectionOption="true" itemLabel="Selecione..."/>
+				<p:selectOneMenu id="marca" value="#{modeloBean.entidade.marca}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItem noSelectionOption="true" itemLabel="Selecione..." />
 					<f:selectItems var="marca" itemValue="#{marca}"
-						itemLabel="#{marca.nome}"  value="#{marcaBean.listar()}"/>
+						itemLabel="#{marca.nome}" value="#{marcaBean.listar()}" />
 				</p:selectOneMenu>
 
-				<p:commandButton action="#{automovelBean.salvar}" value="Salvar" />
+				<p:commandButton action="#{modeloBean.salvar}" value="Salvar" update="@form"/>
 				<p:button value="Voltar" outcome="/index.html" />
 			</p:panelGrid>
 		</p:panel>
