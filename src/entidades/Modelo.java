@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Table(name = "modelo")
 @NoArgsConstructor
+@NamedQuery(name="Modelo.obterPorMarca", query="select m from Modelo m where m.marca = :marca")
 public class Modelo {
 
 	@Id

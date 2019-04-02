@@ -1,11 +1,13 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -47,6 +49,13 @@ public class EntidadeDao<T> {
 
 	public T obterEntidadePorId(Class classe, Integer id) {
 		return (T) em.find(classe, id);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<T> obterTodosPorConsulta(String consulta, HashMap<String, Object> parametros ){
+		Query query = em.createNamedQuery(consulta);
+		parametros.entrySet().forEach(p -> query.setParameter(p.getKey(),p.getValue()));
+		return query.getResultList();
 	}
 
 }

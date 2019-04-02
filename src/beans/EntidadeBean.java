@@ -2,6 +2,7 @@ package beans;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -68,6 +69,10 @@ public abstract class EntidadeBean<T> {
 			e.printStackTrace();
 		}
 		return entidade;
+	}
+	
+	public List obterPorConsulta(String consulta, HashMap<String, Object> parametros){
+		return dao.obterTodosPorConsulta(consulta, parametros);
 	}
 
 

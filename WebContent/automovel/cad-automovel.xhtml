@@ -38,17 +38,17 @@
 				
 				
 				<p:outputLabel for="marca" value="Marca:"/>
-				<p:selectOneMenu id="marca" value="#{automovelBean.marca}">
-					<p:ajax listener="#{automovelBean.updateComboModelo}" update="modelo"/>
+				<p:selectOneMenu id="marca" value="#{automovelBean.marca}" converter="omnifaces.SelectItemsConverter">
+					<p:ajax listener="#{automovelBean.updateComboModelo}" update="modelo" />
 					<f:selectItem noSelectionOption="true" itemLabel="Selecione..."/>
 					<f:selectItems var="marca" value="#{marcaBean.listar()}" itemLabel="#{marca.nome}" itemValue="#{marca}"/>
 				</p:selectOneMenu>
 				
 							
 				<p:outputLabel for="modelo" value="Modelo:" />
-				<p:selectOneMenu id="modelo" value="#{automovelBean.entidade.modelo}">
+				<p:selectOneMenu id="modelo" value="#{automovelBean.entidade.modelo}" converter="omnifaces.SelectItemsConverter">
 					<f:selectItem noSelectionOption="true" itemLabel="Selecione..."/>
-					<f:selectItems var="modelo" value="#{modeloBean.listar()}" itemLabel="#{modelo.descricao}" itemValue="#{modelo}"/>
+					<f:selectItems var="modelo" value="#{automovelBean.modelos}" itemLabel="#{modelo.descricao}" itemValue="#{modelo}"/>
 				</p:selectOneMenu>
 				
 				
