@@ -24,12 +24,13 @@
 	<br />
 	<div>
 		<p:panel header="Sistrânsito - Cadastro de Automóveis">
-			<p:dataTable value="#{indexBean.automoveis}" var="auto" widgetVar="automoveis"
-				id="dtAutomoveis" emptyMessage="Nenhum registro encontrado">
+			<p:dataTable value="#{indexBean.automoveis}" var="auto"
+				widgetVar="automoveis" id="dtAutomoveis"
+				emptyMessage="Nenhum registro encontrado" >
 				<f:facet name="header">
 					<p:outputPanel>
 						<h:outputText value="Pesquisar:" />
-						<p:inputText id="globalFilter" onkeyup="PF('automoveis').filter()"
+						<p:inputText id="globalFilter" onkeyup="PF('automoveis').filter()" 
 							style="width:150px" placeholder="Digite a palavra" />
 					</p:outputPanel>
 				</f:facet>
@@ -59,6 +60,12 @@
 						includeViewParams="true">
 						<f:param name="autoId" value="#{auto.id}" />
 					</p:button>
+					<h:form>
+						<p:commandButton value="Download" ajax="false"
+							action="#{indexBean.downloadFoto(auto)}" immediate="true">
+							<p:fileDownload value="#{indexBean.foto}" />
+						</p:commandButton>
+					</h:form>
 					<p:commandButton value="Remover"
 						action="#{automovelBean.remove(auto)}" update=":dtAutomoveis"
 						immediate="true" />

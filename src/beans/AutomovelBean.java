@@ -1,6 +1,5 @@
 package beans;
 
-import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -11,13 +10,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
 
 import entidades.Automovel;
 import entidades.Marca;
 import entidades.Modelo;
-import javassist.bytecode.ByteArray;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,6 +36,7 @@ public class AutomovelBean extends EntidadeBean<Automovel> implements Serializab
 		String autoId = (String) FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("autoId");
 		if (autoId != null) {
 			recuperaEntidadePorId(autoId);
+			marca = entidade.getModelo().getMarca();
 		}
 	}
 
