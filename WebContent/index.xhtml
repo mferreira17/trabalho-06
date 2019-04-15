@@ -11,5 +11,18 @@
 </h:head>
 <h:body>
 <p:link value="Nova Pessoa" href="nova-pessoa.xhtml"/>
+
+	<p:dataTable value="#{pessoaMB.pessoas}" var="p" >
+		<p:column headerText="ID">
+			<p:outputLabel value="#{p.id}"/>
+		</p:column>
+		<p:column headerText="Nome">
+			<p:outputLabel value="#{p.nome}"/>
+		</p:column>
+		<p:column headerText="Email">
+			<p:outputLabel value="#{p.email}"/>
+		</p:column>
+	</p:dataTable>
+
 </h:body>
 </html>

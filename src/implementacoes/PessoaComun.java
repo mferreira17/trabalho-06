@@ -15,6 +15,7 @@ public class PessoaComun implements PessoaRepositorio{
 	@Override
 	public void salvar(Pessoa pessoa) {
 		EntidadeDao<Pessoa> dao = new EntidadeDao<>();
+		System.out.println("salvando em pessoa comum...");
 		dao.salvar(pessoa);
 	}
 

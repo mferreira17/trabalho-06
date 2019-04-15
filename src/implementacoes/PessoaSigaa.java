@@ -1,8 +1,5 @@
 package implementacoes;
 
-import java.util.Arrays;
-import java.util.List;
-
 import javax.enterprise.context.ApplicationScoped;
 
 import anotacoes.SIGAA;
@@ -18,6 +15,7 @@ public class PessoaSigaa implements PessoaRepositorio{
 	@Override
 	public void salvar(Pessoa pessoa) {
 		EntidadeDao<Pessoa> dao = new EntidadeDao<>();
+		System.out.println("salvando em pessoa sigaa...");
 		dao.salvar(pessoa);
 	}
 

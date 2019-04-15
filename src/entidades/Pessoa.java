@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Pessoa implements Serializable {
+public class Pessoa implements Serializable, Cloneable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

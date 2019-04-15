@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -14,8 +16,11 @@ import javax.transaction.Transactional;
 @Named
 public class EntidadeDao<T> {
 
-	@PersistenceContext(unitName = "pessoaPU")
-	private static EntityManager em;
+	private EntityManager em;
+	
+	public EntidadeDao() {
+		em = Persistence.createEntityManagerFactory("pessoaPU").createEntityManager();
+	}
 
 	@Transactional(rollbackOn = Exception.class)
 	public void salvar(T entidade) {
