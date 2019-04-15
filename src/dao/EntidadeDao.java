@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 @Named
 public class EntidadeDao<T> {
 
-	@PersistenceContext(unitName = "automoveisPU")
+	@PersistenceContext(unitName = "pessoaPU")
 	private static EntityManager em;
 
 	@Transactional(rollbackOn = Exception.class)
@@ -33,7 +33,7 @@ public class EntidadeDao<T> {
 		transaction.commit();
 	}
 	
-	@Transactional(rollbackOn = Exception.class)
+	//@Transactional(rollbackOn = Exception.class)
 	public void remover(Class classe , int id) {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
